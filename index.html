@@ -9,14 +9,26 @@
         <body>
           <section class="section" id="board">
               <div class="container">
-                  <div class="columns">
-                      
+                <!--新規作成フォーム-->
+                <input type="text" v-model="newTaskName" required />
+                <select v-model="newTaskAssignee">
+                    <option value="🐱">🐱</option>
+                    <option value="🐶">🐶</option>
+                    <option value="🐹">🐹</option>
+                </select>
+                <input type="number" v-model="newTaskMandays" min="1" max="3"/>
+                <button @click="addTask">追加</button>
+                <hr>
+                
+                  <div class="columns"><!--以下カラム-->
                       <div class="column status-1"><!--未対応レーン-->
                           <div class="tag has-addons">
                               <span class="tag">未対応</span>
                             　<span class="tag is-dark">{{ tasksOpen.length }}</span>                              
                           </div>
+                          <transition-group name="fade">
                           <task-card v-bind:task="task" v-for="task in tasksOpen" v-bind:key="task.name"></task-card>
+                          </transition-group> 
                       </div>
                       
                       <div class="column status-2"><!--処理中レーン-->
@@ -24,7 +36,9 @@
                               <span class="tag">処理中</span>
                             　<span class="tag is-dark">{{ tasksDoing.length }}</span>                              
                           </div>
+                        <transition-group name="fade"> 
                         <task-card v-bind:task="task" v-for="task in tasksDoing" v-bind:key="task.name"></task-card>
+                        </transition-group>
                       </div>
                       
                       <div class="column status-3"><!--終了レーン-->
@@ -32,15 +46,17 @@
                               <span class="tag">完了</span>
                             　<span class="tag is-dark">{{ tasksClosed.length }}</span>                              
                           </div>
+                      <transition-group name="fade">     
                       <task-card v-bind:task="task" v-for="task in tasksClosed" v-bind:key="task.name"></task-card>
+                      </transition-group>
                       </div>
                       
                   </div><!--columns-->
               </div><!--container-->
           </section><!--id="board"-->
           
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js" charset="shif-jis"></script>
-        <script type="text/javascript" src="app.js" charset="shif-jis"></script>   
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="app.js" charset="UTF-8"></script>   
         </body>
     
 </html>

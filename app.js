@@ -57,7 +57,10 @@ new Vue({
             { name: 'task 2', status: 1, assignee: '🐶', mandays: 2},
             { name: 'task 3', status: 2, assignee: '🐱', mandays: 1},
             { name: 'task 4', status: 3, assignee: '🐹', mandays: 1}
-        ]   
+        ],
+        newTaskName: '',
+        newTaskAssignee: null,
+        newTaskManday: 0
     },
     computed: {
         tasksOpen: function() {
@@ -68,6 +71,11 @@ new Vue({
         },
         tasksClosed: function() {
             return filters.closed(this.tasks)
+        }
+    },
+    methods: {
+        addTask(){
+            this.tasks.push({ name: this.newTaskName, status: 1, assignee: this.newTaskAssignee, mandays: this.newTaskMandays })
         }
     }
 })
