@@ -31,10 +31,22 @@ Vue.component('task-card', {
           </div>                              
       </footer>
       <footer class="card-footer">
-          <a class="card-footer-item">◀</a>
-          <a class="card-footer-item">▶</a>
+          <a class="card-footer-item" v-on:click="decrementStatus(task)">&#x25C0;</a>
+          <a class="card-footer-item" v-on:click="incrementStatus(task)">&#x25B6;</a>
       </footer>
-      </div>`
+      </div>`,
+      methods: {
+        incrementStatus: function(task){
+              if(1 <= task.status && task.status <=2){
+                  task.status++
+              }
+        },
+        decrementStatus: function(task){
+              if(2 <= task.status && task.status <=3){
+                  task.status--
+              }
+            }
+        }
 })
 
 new Vue({

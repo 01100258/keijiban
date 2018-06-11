@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta http-equiv="content-type" charset="utf-8">
-        <title> aaaa</title>
+        <title>Vue.jsでタスク管理アプリケーション</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
         <link rel="stylesheet" href="app.css">
     </head>
@@ -11,7 +11,7 @@
               <div class="container">
                   <div class="columns">
                       
-                      <div class="column status-1">
+                      <div class="column status-1"><!--未対応レーン-->
                           <div class="tag has-addons">
                               <span class="tag">未対応</span>
                             　<span class="tag is-dark">{{ tasksOpen.length }}</span>                              
@@ -19,7 +19,7 @@
                           <task-card v-bind:task="task" v-for="task in tasksOpen" v-bind:key="task.name"></task-card>
                       </div>
                       
-                      <div class="column status-2">
+                      <div class="column status-2"><!--処理中レーン-->
                           <div class="tag has-addons">
                               <span class="tag">処理中</span>
                             　<span class="tag is-dark">{{ tasksDoing.length }}</span>                              
@@ -27,7 +27,7 @@
                         <task-card v-bind:task="task" v-for="task in tasksDoing" v-bind:key="task.name"></task-card>
                       </div>
                       
-                      <div class="column status-3">
+                      <div class="column status-3"><!--終了レーン-->
                           <div class="tag has-addons">
                               <span class="tag">完了</span>
                             　<span class="tag is-dark">{{ tasksClosed.length }}</span>                              
